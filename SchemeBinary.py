@@ -1,0 +1,8 @@
+(define (binary lst target)
+  (let loop ((low 0) (high (- (length lst) 1)))
+    (cond ((> low high) -1)
+          (else (let ((mid (floor (/ (+ low high) 2))))
+                  (cond ((= (list-ref lst mid) target) mid)
+                        ((< (list-ref lst mid) target)
+                         (loop (+ mid 1) high))
+                        (else (loop low (- mid 1)))))))))
